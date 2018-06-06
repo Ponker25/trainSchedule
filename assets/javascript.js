@@ -68,10 +68,10 @@ database.ref().on("child_added", function(childSnapShot, preventChildKey) {
     console.log(frequency);
 
     // Assumptions
-    var tFrequency = 3;
+    var tFrequency = frequency;
 
-    // Time is 3:30 AM
-    var firstTime = "03:30";
+    // Time is Current Time 
+    var firstTime = time;
 
     // First Time (pushed back 1 year to make sure it comes before current time)
     var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
@@ -82,7 +82,7 @@ database.ref().on("child_added", function(childSnapShot, preventChildKey) {
     console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm:ss"));
 
     // format time entered correctly
-    var timePretty = moment.unix(timeInput).format("hh:mm");
+    var timePretty = moment.unix(firstTimeConverted).format("hh:mm");
 
     // Difference between the times
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
@@ -101,6 +101,6 @@ database.ref().on("child_added", function(childSnapShot, preventChildKey) {
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
     
     // Add each train's data into the table
-    $("#train-table > tbody").append("<tr><td>" + trainInput + "</td><td>" + destinationInput + "</td><td>" +
-        timeInput + "</td><td>" + nextTrain + "</td><td>" + minAway + "</td></tr>");
-}) 
+    $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destinationName + "</td><td>" +
+        frequency + "</td><td>" + nextTrain + "</td><td>" + minAway + "</td></tr>");
+});
