@@ -104,3 +104,4 @@ database.ref().on("child_added", function(childSnapShot, preventChildKey) {
     $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destinationName + "</td><td>" +
         frequency + "</td><td>" + nextTrain + "</td><td>" + minAway + "</td></tr>");
 });
+testing
